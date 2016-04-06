@@ -22,7 +22,36 @@ idx = zeros(size(X,1), 1);
 %
 
 
+% calc distance ||x -mu||
 
+
+ for j = 1:size(X,1)
+  
+   thisX = X(j,:);
+   
+   
+   
+   for i = 1:K      
+      
+      thisMu = centroids(i,:); 
+      
+      thisDist = norm(thisX - thisMu);
+      
+      if i == 1
+        minDist = thisDist;
+        thisXidx = 1;
+      end
+      
+      if thisDist < minDist
+        minDist = thisDist;
+        thisXidx = i;
+      end
+    
+  end 
+
+  idx(j) = thisXidx;  
+
+end
 
 
 
